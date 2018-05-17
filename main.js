@@ -23,7 +23,7 @@ $('#addTrip').click(function(event) {
     trips.push(destination);
     displayList(trips);
     localStorage.setItem("trips", JSON.stringify(trips));
-    $('.map').append(getMap(destination));
+    $('#map').append(getMap(destination));
     $('#destinationName').val('');
 });
 
@@ -35,19 +35,8 @@ function getMap(destination) {
         }
       })
       .then(function (response) {
-        var location=response.data.results[0].geometry.location;
-        axios.get('......................................', {
-        params: {
-          key:"AIzaSyDkfMKh99m-RruIiyhX4WoU98vnpwNOBxs",
-          address:destination
-        }
-        })
-            .then(function(response) {
-
-            })
-            .catch(function(error) {
-
-            })
+          //add the marker to the map already created
+        console.log(response);
         })
       .catch(function (error) {
         console.log(error);
