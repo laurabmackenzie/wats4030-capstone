@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     form.addEventListener("submit", addTrip);
 });
 
-function addTrip() {
+function addTrip(event) {
+    event.preventDefault();
     destination = document.getElementById('destinationName').value;
     trips.push(destination);
     displayList(trips);
@@ -48,8 +49,9 @@ function getMap(destination) {
             title: response.data.results[0].formatted_address
           });
           //center the map to the current location
-        map.setCenter(new google.maps.LatLng(lat,lng));
+        map.panTo(new google.maps.LatLng(lat,lng));
         })
+        map.setZoom(5)
       .catch(function (error) {
         console.log(error);
       });
