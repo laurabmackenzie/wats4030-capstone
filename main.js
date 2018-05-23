@@ -2,12 +2,16 @@ var trips = [];
 var destination="";
 
 function displayList(trips) {
-    $(".destinationList").remove();
-    $(".list").append("<ul class='destinationList'></ul>");
-    for (i=0; i<trips.length; i++) {
-        var listDestination=$('<li></li>').text(trips[i]);
-        $('.destinationList').append(listDestination);
-    }
+    var list=document.getElementById('listofplaces');
+    list.parentNode.removeChild(list);
+    var destinationList=document.createElement('ul');
+    destinationList.setAttribute('id', 'listofplaces');
+        for (i=0; i<trips.length; i++) {
+            var list=document.createElement('li');
+            var listDestination=document.createTextNode(trips[i]);
+            list.appendChild(listDestination);
+            destinationList.appendChild(list);
+        }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -23,7 +27,8 @@ function addTrip(event) {
     trips.push(destination);
     displayList(trips);
     localStorage.setItem("trips", JSON.stringify(trips));
-    $('#map').append(getMap(destination));
+    var map=document.getElementById('map');
+    map.appendChild(getMap(destination));
     document.getElementById('destinationName').value="";
 };
 
