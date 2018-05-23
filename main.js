@@ -10,20 +10,21 @@ function displayList(trips) {
     }
 }
 
-$( document ).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) { 
     trips = JSON.parse(localStorage.getItem("trips") || "[]");
     displayList(trips);
 });
 
-$('#addTrip').click(function(event) {
-    event.preventDefault();
-    destination = $('#destinationName').val();
+function addTrip() {
+    console.log('hello');
+    destination = document.getElementById('destinationName').value;
+    console.log(destination);
     trips.push(destination);
     displayList(trips);
     localStorage.setItem("trips", JSON.stringify(trips));
     $('#map').append(getMap(destination));
-    $('#destinationName').val('');
-});
+    document.getElementById('destinationName').value="";
+};
 
 //Google geocode api call to add centered marker to map
 function getMap(destination) {
