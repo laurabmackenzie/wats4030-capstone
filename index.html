@@ -38,17 +38,19 @@
       </div>
     </div>
     <form  id="trip-entry">
-      Destination:
+      Enter your destination:
       <br>
       <input type="text" id="destinationName" name="destination">
       <button type="submit" id="addTrip" value="Submit">Add Trip</button>
     </form>
     <div class="row">
-      <div class="list col-md-6">
+      <div class="list col-md-4">
         <ul class="destinationList" id="listofplaces"></ul>
       </div>
+      <div id="deleteicon" class="col-md-2"></div>
       <div id="map" class="col-md-6"></div>
     </div>
+    <button type=button id="clearButton">Delete All Destinations</button>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
