@@ -27,6 +27,14 @@ function saveMarkers() {
     localStorage.setItem('markers', JSON.stringify(markers));
 }
 
+function fitMap() {
+    var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < markers.length; i++) {
+        bounds.extend({lat:markers[i].lat, lng: markers[i].lng});
+}
+    map.fitBounds(bounds);
+}
+
 function displayList(trips) {
     var list = document.getElementById('listofplaces');
 
@@ -75,6 +83,7 @@ function clearAll(event) {
     event.preventDefault();
     localStorage.clear();
     loadTrips();
+    loadMarkers();
     displayList(trips);
     initMap();
 }
@@ -145,5 +154,6 @@ function initMap() {
     });
     for (i=0; i<markers.length; i++) {
     getMarker(i);
+    fitMap();
     }
 }
