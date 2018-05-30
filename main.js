@@ -67,6 +67,8 @@ function addTrip(event) {
     if (destination.length > 0) {
         getMap(destination);
     }
+    saveTrips();
+    saveMarkers();
 };
 
 function clearAll(event) {
@@ -84,6 +86,7 @@ function deleteDestination(event) {
     markers.splice(index,1);
     displayList(trips);
     saveTrips();
+    saveMarkers();
     initMap();
 }
 
