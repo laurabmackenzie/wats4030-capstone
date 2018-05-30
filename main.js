@@ -1,5 +1,23 @@
 var trips = [];
 var destination = "";
+var markers = [];
+var map;
+
+function loadTrips() {
+    trips = JSON.parse(localStorage.getItem("trips") || "[]");
+}
+
+function loadMarker(i) {
+        if (trips[i].lat=markers[i].lat) {
+            if (trips[i].lng=markers[i].lng) {
+                createMarker(markers[i].lat, markers[i].lng, trips[i].title);
+            }
+        }
+    }
+
+function saveTrips() {
+    localStorage.setItem("trips", JSON.stringify(trips));
+}
 
 function displayList(trips) {
     var list = document.getElementById('listofplaces');
@@ -25,7 +43,7 @@ function displayList(trips) {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    trips = JSON.parse(localStorage.getItem("trips") || "[]");
+    loadTrips();
     displayList(trips);
     let form = document.getElementById("trip-entry");
     form.addEventListener("submit", addTrip);
@@ -35,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 function addTrip(event) {
     event.preventDefault();
-    var trip = {};
+    //var trip = {};
     destination = document.getElementById('destinationName').value;
     if (destination.length > 0) {
         getMap(destination);
@@ -45,7 +63,7 @@ function addTrip(event) {
 function clearAll(event) {
     event.preventDefault();
     localStorage.clear();
-    trips = JSON.parse(localStorage.getItem("trips") || "[]");
+    loadTrips();
     displayList(trips);
     initMap();
 }
@@ -53,11 +71,20 @@ function clearAll(event) {
 function deleteDestination(event) {
     event.preventDefault();
     var index=this.parentNode.dataset.index;
-    // var marker=trips[index].marker;
-    // marker.setMap(null);
     trips.splice(index,1);
+    markers.splice(index,1);
     displayList(trips);
-    initMap(); 
+    saveTrips();
+    initMap();
+}
+
+function createMarker(lat, lng, address) {
+    var myLatLng = {lat:lat, lng:lng};
+    var newmarker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: address
+    });
 }
 
 //Google geocode api call to add centered marker to map
@@ -74,34 +101,36 @@ function getMap(destination) {
             //add the marker to the map already created
             var lat = response.data.results[0].geometry.location.lat;
             var lng = response.data.results[0].geometry.location.lng;
+            var address = response.data.results[0].formatted_address;
+            var marker={};            
+            marker.lat=lat;
+            marker.lng=lng;
+            markers.push(marker);
             console.log(lat);
             console.log(lng);
-            var marker = new google.maps.Marker({
-                position: response.data.results[0].geometry.location,
-                map: map,
-                title: response.data.results[0].formatted_address
-            });
             var trip={};
             trip.lat = lat;
             trip.lng = lng;
             trip.title = destination;
             trips.push(trip);
-            localStorage.setItem("trips", JSON.stringify(trips));
+            saveTrips();
             document.getElementById('destinationName').value = "";
             displayList(trips);
             map.panTo(new google.maps.LatLng(lat, lng));
             map.setZoom(5);
+            createMarker(lat, lng, address);
         })
         .catch(function (error) {
             console.log(error);
         });
 }
 //create a world map using Google Maps api
-var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 37.356, lng: -39.059 },
         zoom: 1
     });
-    trips = JSON.parse(localStorage.getItem("trips") || "[]");
+    for (i=0; i<markers.length; i++) {
+    loadMarker(i);
+    }
 }
