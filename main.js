@@ -7,7 +7,11 @@ function loadTrips() {
     trips = JSON.parse(localStorage.getItem("trips") || "[]");
 }
 
-function loadMarker(i) {
+function loadMarkers() {
+    markers = JSON.parse(localStorage.getItem("markers")|| "[]");
+}
+
+function getMarker(i) {
         if (trips[i].lat=markers[i].lat) {
             if (trips[i].lng=markers[i].lng) {
                 createMarker(markers[i].lat, markers[i].lng, trips[i].title);
@@ -17,6 +21,10 @@ function loadMarker(i) {
 
 function saveTrips() {
     localStorage.setItem("trips", JSON.stringify(trips));
+}
+
+function saveMarkers() {
+    localStorage.setItem('markers', JSON.stringify(markers));
 }
 
 function displayList(trips) {
@@ -44,6 +52,7 @@ function displayList(trips) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     loadTrips();
+    loadMarkers();    
     displayList(trips);
     let form = document.getElementById("trip-entry");
     form.addEventListener("submit", addTrip);
@@ -106,6 +115,7 @@ function getMap(destination) {
             marker.lat=lat;
             marker.lng=lng;
             markers.push(marker);
+            saveMarkers();
             console.log(lat);
             console.log(lng);
             var trip={};
@@ -131,6 +141,6 @@ function initMap() {
         zoom: 1
     });
     for (i=0; i<markers.length; i++) {
-    loadMarker(i);
+    getMarker(i);
     }
 }
