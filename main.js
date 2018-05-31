@@ -32,7 +32,9 @@ function fitMap() {
         for (var i = 0; i < markers.length; i++) {
         bounds.extend({lat:markers[i].lat, lng: markers[i].lng});
 }
-    map.fitBounds(bounds);
+    if (markers.length>1) {
+        map.fitBounds(bounds);
+    }
 }
 
 function displayList(trips) {

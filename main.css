@@ -1,7 +1,15 @@
 /*Setting the map height explicitly to define the size of the div element that contains the map. */
        #map {
         height: 250px;
-        width: 250px;
+        width: 700px;
+      }
+
+      #listrow {
+          padding: 2%;
+      }
+
+      #listofplaces {
+          list-style-type: none;
       }
       /* Makes the sample page fill the window. 
       html, body {
