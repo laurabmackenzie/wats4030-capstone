@@ -48,15 +48,17 @@ function displayList(trips) {
 
     for (i = 0; i < trips.length; i++) {
         var listItem = document.createElement('li');
-        var deleteButton = document.createElement('button');
+        var deleteIcon = document.createElement('a');
         var listDestination = document.createTextNode(trips[i].title);
-        var buttonText = document.createTextNode('remove');
+        var trashCan = document.createElement('i');
+        trashCan.setAttribute('class', 'far fa-trash-alt');
+        deleteIcon.setAttribute('href', '#');
+        deleteIcon.appendChild(trashCan);
         listItem.setAttribute('data-index', i);
         listItem.appendChild(listDestination);
-        deleteButton.appendChild(buttonText);
-        listItem.appendChild(deleteButton);
+        listItem.appendChild(deleteIcon);
         list.appendChild(listItem);
-        deleteButton.addEventListener("click", deleteDestination);
+        deleteIcon.addEventListener("click", deleteDestination);
     }
 }
 
