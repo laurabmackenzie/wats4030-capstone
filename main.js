@@ -47,13 +47,15 @@ function displayList(trips) {
     }
 
     for (i = 0; i < trips.length; i++) {
-        var listItem = document.createElement('li');
+        var listItem = document.createElement('a');
         var deleteIcon = document.createElement('a');
         var listDestination = document.createTextNode(trips[i].title);
         var trashCan = document.createElement('i');
         trashCan.setAttribute('class', 'far fa-trash-alt');
         deleteIcon.setAttribute('href', '#');
         deleteIcon.appendChild(trashCan);
+        listItem.setAttribute('href', '#');
+        listItem.setAttribute('class', 'list-group-item list-group-item-action');
         listItem.setAttribute('data-index', i);
         listItem.appendChild(listDestination);
         listItem.appendChild(deleteIcon);
