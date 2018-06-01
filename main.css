@@ -1,6 +1,6 @@
 /*Setting the map height explicitly to define the size of the div element that contains the map. */
     #map {
-        height: 250px;
+        min-height: 250px;
         width: 700px;
     }
 
@@ -38,11 +38,13 @@
             #map {
               margin: 5%;
             }
-        
-        @media only screen and (min-width: 414px) and (orientation: landscape) {
+        }
+
+        @media only screen and (min-width: 414px) and (orientation: landscape) and (max-width: 768px) {
             #map {
                 margin: 2%;
             }
+        }
 
       /* Makes the sample page fill the window. 
       html, body {
