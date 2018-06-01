@@ -11,6 +11,25 @@
       #listofplaces {
           list-style-type: none;
       }
+      
+      .hero {
+          background-image: url('Photos/HomepageImage.jpg');
+      }
+
+      .content {
+          margin-top: 25px;
+      }
+
+      #headlines {
+        text-align: center;
+        font-style: italic;
+        font-size: x-large;
+      }
+
+      #abouttext {
+        padding: 0 15% 0 15%;
+        font-size: large;
+      }
 
       .fa-trash-alt {
         color: black;
@@ -45,6 +64,13 @@
                 margin: 2%;
             }
         }
+
+        @media only screen and (min-width: 768px) {
+            .hero {
+                min-height: 375px;
+            }
+        }
+
 
       /* Makes the sample page fill the window. 
       html, body {
