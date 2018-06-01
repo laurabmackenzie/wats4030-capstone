@@ -4,6 +4,9 @@
         width: 700px;
     }
 
+    #homepagebody {
+        background-image: url('photos/HomepageImage.jpg');
+    }
       #listrow {
           padding: 1% 2% 0 0;
       }
@@ -13,11 +16,15 @@
       }
       
       .hero {
-          background-image: url('Photos/HomepageImage.jpg');
+          background-image: url('Photos/HeaderImage.jpg');
+      }
+
+      #trip-entry {
+          padding-bottom: 2%;
       }
 
       .content {
-          margin-top: 25px;
+          margin-top: 70px;
       }
 
       #headlines {

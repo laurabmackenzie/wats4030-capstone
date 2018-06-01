@@ -61,6 +61,7 @@ function displayList(trips) {
         listItem.appendChild(deleteIcon);
         list.appendChild(listItem);
         deleteIcon.addEventListener("click", deleteDestination);
+        listItem.addEventListener("click", UpdateMap)
     }
 }
 
@@ -112,6 +113,10 @@ function createMarker(lat, lng, address) {
         map: map,
         title: address
     });
+}
+
+function UpdateMap(event) {
+
 }
 
 //Google geocode api call to add centered marker to map
