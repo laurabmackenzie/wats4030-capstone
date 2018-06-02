@@ -6,6 +6,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120254743-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+      gtag('js', new Date());
+      gtag('config', 'UA-120254743-1');
+    }
+  </script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
@@ -32,7 +43,7 @@
     </div>
   </nav>
   <div class="container-fluid content">
-    <form  id="trip-entry">
+    <form id="trip-entry">
       Enter your destination:
       <br>
       <input type="text" id="destinationName" name="destination">
@@ -43,17 +54,17 @@
         <ul class="destinationList" id="listofplaces"></ul>
       </div>
       <div id="map" class="col-md-8"></div>
-      </div>
+    </div>
     <div class="clearbuttonArea">
       <button type=button id="clearButton">Delete All Destinations</button>
     </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkfMKh99m-RruIiyhX4WoU98vnpwNOBxs&callback=initMap" async
-    defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkfMKh99m-RruIiyhX4WoU98vnpwNOBxs&callback=initMap" async
+      defer></script>
 </body>
 
 </html>

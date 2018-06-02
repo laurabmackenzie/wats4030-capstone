@@ -106,6 +106,13 @@ function deleteDestination(event) {
     initMap();
 }
 
+function UpdateMap(event) {
+    event.preventDefault();
+    var index=this.dataset.index;
+    console.log(index);
+    getMap(trips[index].title);
+}
+
 function createMarker(lat, lng, address) {
     var myLatLng = {lat:lat, lng:lng};
     var newmarker = new google.maps.Marker({
@@ -113,10 +120,6 @@ function createMarker(lat, lng, address) {
         map: map,
         title: address
     });
-}
-
-function UpdateMap(event) {
-
 }
 
 //Google geocode api call to add centered marker to map
@@ -144,7 +147,7 @@ function getMap(destination) {
             var trip={};
             trip.lat = lat;
             trip.lng = lng;
-            trip.title = destination;
+            trip.title = address;
             trips.push(trip);
             saveTrips();
             document.getElementById('destinationName').value = "";
@@ -155,6 +158,7 @@ function getMap(destination) {
         })
         .catch(function (error) {
             console.log(error);
+            alert('There is no destination with this name. Please try again.')
         });
 }
 //create a world map using Google Maps api

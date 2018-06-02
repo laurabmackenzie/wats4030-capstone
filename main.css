@@ -5,11 +5,11 @@
     }
 
     #homepagebody {
-        background-image: url('photos/HomepageImage.jpg');
+        background-image: url('Photos/HomepageImage.jpg');
     }
 
     .secondaryhero {
-        background-image: url('photos/HeaderImage.jpg');
+        background-image: url('Photos/HeaderImage.jpg');
     }
       #listrow {
           padding: 1% 2% 0 0;
@@ -133,12 +133,14 @@
         @media only screen and (min-width: 768px) {
             #map {
                 min-height: 350px;
+                max-height: 500px;
             }
         }
 
         @media only screen  and (min-width : 1366px) {
             #map {
                 min-height: 500px;
+                max-height: 800px;
             }
             .logo {
                 padding-top: 10%;
