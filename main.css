@@ -43,12 +43,16 @@
       #headlines {
         text-align: center;
         font-style: italic;
-        font-size: x-large;
-        padding-bottom: 2%;
+        font-size: large;
+        padding:0px;
       }
 
       .enter:hover {
           color: white;
+      }
+
+      hr {
+          width: 50%;
       }
 
       .enter:active {
