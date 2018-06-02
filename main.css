@@ -7,6 +7,10 @@
     #homepagebody {
         background-image: url('photos/HomepageImage.jpg');
     }
+
+    .secondaryhero {
+        background-image: url('photos/HeaderImage.jpg');
+    }
       #listrow {
           padding: 1% 2% 0 0;
       }
@@ -16,9 +20,18 @@
       }
       
       .hero {
-          background-image: url('Photos/HeaderImage.jpg');
+          background-color: transparent;
       }
 
+      .logo {
+          color: white;
+          padding-top: 2%;
+      }
+
+      .clicktext {
+          font-size: 1.2rem;
+          color:white;
+      }
       #trip-entry {
           padding-bottom: 2%;
       }
@@ -31,10 +44,37 @@
         text-align: center;
         font-style: italic;
         font-size: x-large;
+        padding-bottom: 2%;
       }
 
+      .enter:hover {
+          color: white;
+      }
+
+      .enter:active {
+          color: white;
+      }
+
+      .enter:visited {
+          color: white;
+      }
+
+      .enter:link {
+          color: #333333;
+      }
+
+      .fa-plane {
+          color: #333333;
+      }
+
+      .entertext:hover {
+          color: #333333;
+          text-decoration: none;
+      }
+
+
       #resources {
-          font-size:xx-large;
+          font-size: large;
       }
 
       #abouttext {
@@ -85,14 +125,25 @@
             #map {
                 margin: 2%;
             }
-        }
-
-        @media only screen and (min-width: 768px) {
-            .hero {
-                min-height: 375px;
+            .logo {
+                padding-top: 0;
             }
         }
 
+        @media only screen and (min-width: 768px) {
+            #map {
+                min-height: 350px;
+            }
+        }
+
+        @media only screen  and (min-width : 1366px) {
+            #map {
+                min-height: 500px;
+            }
+            .logo {
+                padding-top: 10%;
+            }
+        }
 
       /* Makes the sample page fill the window. 
       html, body {

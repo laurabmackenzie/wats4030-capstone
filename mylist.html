@@ -13,7 +13,7 @@
   <title>Wanderlist</title>
 </head>
 
-<body id="homepagebody">
+<body>
   <nav id="navigation" class="navbar navbar-expand-sm fixed-top navbar-light bg-light">
     <a class="navbar-brand" href="#">Wanderlist</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -31,7 +31,29 @@
       </ul>
     </div>
   </nav>
-<div class="container-fluid content">
-        <h1 class="display-4 text-center">Never forget where you want to go.</h1>
-</div>
+  <div class="container-fluid content">
+    <form  id="trip-entry">
+      Enter your destination:
+      <br>
+      <input type="text" id="destinationName" name="destination">
+      <button type="submit" id="addTrip" value="Submit">Add Trip</button>
+    </form>
+    <div class="row" id="listrow">
+      <div class="list col-md-4">
+        <ul class="destinationList" id="listofplaces"></ul>
+      </div>
+      <div id="map" class="col-md-8"></div>
+      </div>
+    <div class="clearbuttonArea">
+      <button type=button id="clearButton">Delete All Destinations</button>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkfMKh99m-RruIiyhX4WoU98vnpwNOBxs&callback=initMap" async
+    defer></script>
 </body>
+
+</html>
