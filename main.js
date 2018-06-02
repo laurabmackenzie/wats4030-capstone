@@ -110,7 +110,8 @@ function UpdateMap(event) {
     event.preventDefault();
     var index=this.dataset.index;
     console.log(index);
-    getMap(trips[index].title);
+    map.panTo(new google.maps.LatLng(trips[index].lat, trips[index].lng));
+    map.setZoom(5);
 }
 
 function createMarker(lat, lng, address) {
