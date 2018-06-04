@@ -137,6 +137,12 @@
             padding:  1% 0 2% 0;
         }
 
+        #copyright {
+            text-align:center;
+            font-size: small;
+            padding-top: 2%;
+        }
+
 
         @media only screen and (max-width: 414px) {
             #map {
