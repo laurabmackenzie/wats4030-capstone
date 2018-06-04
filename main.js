@@ -59,6 +59,7 @@ function displayList(trips) {
         listItem.setAttribute('data-index', i);
         listItem.appendChild(listDestination);
         listItem.appendChild(deleteIcon);
+
         list.appendChild(listItem);
         deleteIcon.addEventListener("click", deleteDestination);
         listItem.addEventListener("click", UpdateMap)

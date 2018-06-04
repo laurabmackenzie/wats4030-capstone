@@ -44,10 +44,17 @@
   </nav>
   <div class="container-fluid content">
     <form id="trip-entry">
-      Enter your destination:
-      <br>
-      <input type="text" id="destinationName" name="destination">
-      <button type="submit" id="addTrip" value="Submit">Add Trip</button>
+      <div class="form-group">
+          <label for="destinationName">What place do you want to visit?</label>
+      <input type="text" class="form-control" id="destinationName"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="destinationDescription">What makes this place special?</label>        
+      <textarea class="form-control" id="destinationDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+      <button type="submit" class="btn" id="addTrip">Add Trip</button>
+      </div>
     </form>
     <div class="row" id="listrow">
       <div class="list col-md-4">
@@ -56,7 +63,7 @@
       <div id="map" class="col-md-8"></div>
     </div>
     <div class="clearbuttonArea">
-      <button type=button id="clearButton">Delete All Destinations</button>
+      <button type=button id="clearButton" class="btn">Delete All Destinations</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
