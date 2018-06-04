@@ -1,5 +1,6 @@
 var trips = [];
 var destination = "";
+var description = "";
 var markers = [];
 var map;
 
@@ -48,8 +49,10 @@ function displayList(trips) {
 
     for (i = 0; i < trips.length; i++) {
         var listItem = document.createElement('a');
+        var itemStyle = document.createElement('strong');
         var deleteIcon = document.createElement('a');
         var listDestination = document.createTextNode(trips[i].title);
+        //creating delete icon
         var trashCan = document.createElement('i');
         trashCan.setAttribute('class', 'far fa-trash-alt');
         deleteIcon.setAttribute('href', '#');
@@ -57,12 +60,20 @@ function displayList(trips) {
         listItem.setAttribute('href', '#');
         listItem.setAttribute('class', 'list-group-item list-group-item-action');
         listItem.setAttribute('data-index', i);
-        listItem.appendChild(listDestination);
+        itemStyle.appendChild(listDestination)
+        listItem.appendChild(itemStyle);
         listItem.appendChild(deleteIcon);
-
+        //adding description
+        var p = document.createElement('p');
+        p.setAttribute("class", "special")
+        var description = document.createTextNode(trips[i].description);
+        if (description.length>0) {
+        p.appendChild(description);
+        listItem.appendChild(p);
+        }
         list.appendChild(listItem);
         deleteIcon.addEventListener("click", deleteDestination);
-        listItem.addEventListener("click", UpdateMap)
+        listItem.addEventListener("click", updateInfo)
     }
 }
 
@@ -78,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 function addTrip(event) {
     event.preventDefault();
-    //var trip = {};
     destination = document.getElementById('destinationName').value;
+    description = document.getElementById('destinationDescription').value;
     if (destination.length > 0) {
         getMap(destination);
     }
@@ -107,13 +118,23 @@ function deleteDestination(event) {
     initMap();
 }
 
-function UpdateMap(event) {
+function updateInfo(event) {
     event.preventDefault();
+    removeActive();
     var index=this.dataset.index;
     console.log(index);
     map.panTo(new google.maps.LatLng(trips[index].lat, trips[index].lng));
     map.setZoom(5);
+    this.className += " active";
 }
+
+function removeActive() {
+    var item = document.querySelector(".active");
+    if (item) {
+        item.classList.remove("active");
+    }
+}
+
 
 function createMarker(lat, lng, address) {
     var myLatLng = {lat:lat, lng:lng};
@@ -150,9 +171,11 @@ function getMap(destination) {
             trip.lat = lat;
             trip.lng = lng;
             trip.title = address;
+            trip.description=description;
             trips.push(trip);
             saveTrips();
             document.getElementById('destinationName').value = "";
+            document.getElementById('destinationDescription').value = "";
             displayList(trips);
             map.panTo(new google.maps.LatLng(lat, lng));
             map.setZoom(5);

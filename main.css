@@ -11,6 +11,16 @@
     .secondaryhero {
         background-image: url('Photos/HeaderImage.jpg');
     }
+
+    a.active p.special {
+        display:block;
+    }
+
+
+    .special {
+        display:none;
+    }
+
       #listrow {
           padding: 1% 2% 0 0;
       }
@@ -90,11 +100,20 @@
         color: black;
         float:right;
         }
+
+        .active i.far.fa-trash-alt {
+            color: white;
+        }
         
-    .list-group-item {
+        .list-group-item {
         color: gray;
         background-color: white;
         border-color: darkgray;
+        }
+
+        .list-group-item.active {
+        background-color: #506987;
+        border-color:#506987;
         }
         
         .destinationList {
