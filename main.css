@@ -3,182 +3,176 @@
         min-height: 250px;
         width: 700px;
     }
-
+    
     #homepagebody {
         background-image: url('Photos/HomepageImage.jpg');
     }
-
+    
     .secondaryhero {
         background-image: url('Photos/HeaderImage.jpg');
     }
 
+    /*showing the description in active mode*/
     a.active p.special {
         display:block;
     }
-
-
+    
     .special {
         display:none;
     }
-
-      #listrow {
-          padding: 1% 2% 0 0;
-      }
-
-      #listofplaces {
-          list-style-type: none;
-      }
-      
-      .hero {
-          background-color: transparent;
-      }
-
-      .logo {
-          color: white;
-          padding-top: 2%;
-      }
-
-      .clicktext {
-          font-size: 1.2rem;
-          color:white;
-      }
-      #trip-entry {
-          padding-bottom: 2%;
-      }
-
-      .content {
-          margin-top: 70px;
-      }
-
-      #headlines {
+    
+    #listrow {
+        padding: 1% 2% 0 0;
+    }
+    
+    #listofplaces {
+        list-style-type: none;
+    }
+    
+    .hero {
+        background-color: transparent;
+    }
+    
+    .logo {
+        color: white;
+        padding-top: 2%;
+    }
+    
+    .clicktext {
+        font-size: 1.2rem;
+        color:white;
+    }
+    
+    #trip-entry {
+        padding-bottom: 2%;
+    }
+    
+    .content {
+        margin-top: 70px;
+    }
+    
+    #headlines {
         text-align: center;
         font-style: italic;
         font-size: large;
         padding:0px;
       }
-
-      .enter:hover {
-          color: white;
-      }
-
-      hr {
-          width: 50%;
-      }
-
-      .enter:active {
-          color: white;
-      }
-
-      .enter:visited {
-          color: white;
-      }
-
-      .enter:link {
-          color: #333333;
-      }
-
-      .fa-plane {
-          color: #333333;
-      }
-
-      .entertext:hover {
-          color: #333333;
-          text-decoration: none;
-      }
-
-
-      #resources {
-          font-size: large;
-      }
-
-      #abouttext {
+      
+    .enter:hover {
+        color: white;
+    }
+    
+    hr {
+        width: 50%;
+    }
+    
+    .enter:active {
+        color: white;
+    }
+    
+    .enter:visited {
+        color: white;
+    }
+    
+    .enter:link {
+        color: #333333;
+    }
+    
+    .fa-plane {
+        color: #333333;
+    } 
+    
+    .entertext:hover {
+        color: #333333;
+        text-decoration: none;
+    }
+    
+    #resources {
+        font-size: large;
+    }
+    
+    #abouttext {
         padding: 0 15% 0 15%;
         font-size: large;
-      }
-
-      .fa-trash-alt {
+    }
+    
+    .fa-trash-alt {
         color: black;
         float:right;
-        }
+    }
 
-        .active i.far.fa-trash-alt {
-            color: white;
-        }
-        
-        .list-group-item {
+    .active i.far.fa-trash-alt {
+        color: white;
+    }
+    
+    .list-group-item {
         color: gray;
         background-color: white;
         border-color: darkgray;
-        }
+    }
 
-        .list-group-item.active {
+    .list-group-item.active {
         background-color: #506987;
         border-color:#506987;
-        }
-        
-        .destinationList {
+    }
+    
+    .destinationList {
         padding-left: 0px;
         margin-bottom: 0.3rem;
-        }
+    }
 
-        .resources {
-            padding-bottom: 2%;
-        }
+    .resources {
+        padding-bottom: 2%;
+    }
 
-        #rsrc {
+    #rsrc {
+        margin: 2%;
+    }        
+        
+    .resourcecontainer {
+        padding: 0 15% 0 15%;
+    }
+        
+    .clearbuttonArea {
+        padding:  1% 0 2% 0;
+    }
+
+    #copyright {
+        text-align:center;
+        font-size: small;
+        padding-top: 2%;
+    }
+    
+    @media only screen and (max-width: 414px) {
+        #map {
+            margin: 5%;
+        }
+    }
+
+    @media only screen and (min-width: 414px) and (orientation: landscape) and (max-width: 768px) {
+        #map {
             margin: 2%;
-        }        
-        
-        .resourcecontainer {
-            padding: 0 15% 0 15%;
         }
         
-        .clearbuttonArea {
-            padding:  1% 0 2% 0;
+        .logo {
+            padding-top: 0;
         }
-
-        #copyright {
-            text-align:center;
-            font-size: small;
-            padding-top: 2%;
+    }
+    
+    @media only screen and (min-width: 768px) {
+        #map {
+            min-height: 350px;
+            max-height: 500px;
         }
+    }
 
-
-        @media only screen and (max-width: 414px) {
-            #map {
-              margin: 5%;
-            }
+    @media only screen  and (min-width : 1366px) {
+        #map {
+            min-height: 500px;
+            max-height: 800px;
         }
-
-        @media only screen and (min-width: 414px) and (orientation: landscape) and (max-width: 768px) {
-            #map {
-                margin: 2%;
-            }
-            .logo {
-                padding-top: 0;
-            }
+        
+        .logo {
+            padding-top: 10%;
         }
-
-        @media only screen and (min-width: 768px) {
-            #map {
-                min-height: 350px;
-                max-height: 500px;
-            }
-        }
-
-        @media only screen  and (min-width : 1366px) {
-            #map {
-                min-height: 500px;
-                max-height: 800px;
-            }
-            .logo {
-                padding-top: 10%;
-            }
-        }
-
-      /* Makes the sample page fill the window. 
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }*/
+    }

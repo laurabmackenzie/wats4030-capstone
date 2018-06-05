@@ -4,40 +4,48 @@ var description = "";
 var markers = [];
 var map;
 
+//retrieves trips from local storage.
 function loadTrips() {
     trips = JSON.parse(localStorage.getItem("trips") || "[]");
 }
 
+//retrieves markers from local storage.
 function loadMarkers() {
-    markers = JSON.parse(localStorage.getItem("markers")|| "[]");
+    markers = JSON.parse(localStorage.getItem("markers") || "[]");
 }
 
 function getMarker(i) {
-        if (trips[i].lat=markers[i].lat) {
-            if (trips[i].lng=markers[i].lng) {
-                createMarker(markers[i].lat, markers[i].lng, trips[i].title);
-            }
+    if (trips[i].lat = markers[i].lat) {
+        if (trips[i].lng = markers[i].lng) {
+            createMarker(markers[i].lat, markers[i].lng, trips[i].title);
         }
     }
+}
 
+//saves trips to local storage.
 function saveTrips() {
     localStorage.setItem("trips", JSON.stringify(trips));
 }
 
+//saves markers to local storage.
 function saveMarkers() {
     localStorage.setItem('markers', JSON.stringify(markers));
 }
 
+
+//enables user to see all saved markers on map.
 function fitMap() {
     var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < markers.length; i++) {
-        bounds.extend({lat:markers[i].lat, lng: markers[i].lng});
-}
-    if (markers.length>1) {
+    for (var i = 0; i < markers.length; i++) {
+        bounds.extend({ lat: markers[i].lat, lng: markers[i].lng });
+    }
+    if (markers.length > 1) {
         map.fitBounds(bounds);
     }
 }
 
+
+//displays destination list.
 function displayList(trips) {
     var list = document.getElementById('listofplaces');
 
@@ -67,9 +75,9 @@ function displayList(trips) {
         var p = document.createElement('p');
         p.setAttribute("class", "special")
         var description = document.createTextNode(trips[i].description);
-        if (description.length>0) {
-        p.appendChild(description);
-        listItem.appendChild(p);
+        if (description.length > 0) {
+            p.appendChild(description);
+            listItem.appendChild(p);
         }
         list.appendChild(listItem);
         deleteIcon.addEventListener("click", deleteDestination);
@@ -79,13 +87,15 @@ function displayList(trips) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     loadTrips();
-    loadMarkers();    
+    loadMarkers();
     displayList(trips);
     let form = document.getElementById("trip-entry");
     form.addEventListener("submit", addTrip);
     let clear = document.getElementById('clearButton');
     clear.addEventListener("click", clearAll);
 });
+
+
 
 function addTrip(event) {
     event.preventDefault();
@@ -98,6 +108,7 @@ function addTrip(event) {
     saveMarkers();
 };
 
+
 function clearAll(event) {
     event.preventDefault();
     localStorage.clear();
@@ -107,26 +118,33 @@ function clearAll(event) {
     initMap();
 }
 
+
+
 function deleteDestination(event) {
     event.preventDefault();
-    var index=this.parentNode.dataset.index;
-    trips.splice(index,1);
-    markers.splice(index,1);
+    var index = this.parentNode.dataset.index;
+    trips.splice(index, 1);
+    markers.splice(index, 1);
     displayList(trips);
     saveTrips();
     saveMarkers();
     initMap();
 }
 
+
 function updateInfo(event) {
     event.preventDefault();
     removeActive();
-    var index=this.dataset.index;
+    var index = this.dataset.index;
     console.log(index);
+    console.log(trips[index]);
+    if (trips[index]!=undefined) {
     map.panTo(new google.maps.LatLng(trips[index].lat, trips[index].lng));
     map.setZoom(5);
     this.className += " active";
+    }
 }
+
 
 function removeActive() {
     var item = document.querySelector(".active");
@@ -137,7 +155,7 @@ function removeActive() {
 
 
 function createMarker(lat, lng, address) {
-    var myLatLng = {lat:lat, lng:lng};
+    var myLatLng = { lat: lat, lng: lng };
     var newmarker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -160,18 +178,18 @@ function getMap(destination) {
             var lat = response.data.results[0].geometry.location.lat;
             var lng = response.data.results[0].geometry.location.lng;
             var address = response.data.results[0].formatted_address;
-            var marker={};            
-            marker.lat=lat;
-            marker.lng=lng;
+            var marker = {};
+            marker.lat = lat;
+            marker.lng = lng;
             markers.push(marker);
             saveMarkers();
             console.log(lat);
             console.log(lng);
-            var trip={};
+            var trip = {};
             trip.lat = lat;
             trip.lng = lng;
             trip.title = address;
-            trip.description=description;
+            trip.description = description;
             trips.push(trip);
             saveTrips();
             document.getElementById('destinationName').value = "";
@@ -186,14 +204,16 @@ function getMap(destination) {
             alert('There is no destination with this name. Please try again.')
         });
 }
+
+
 //create a world map using Google Maps api
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 37.356, lng: -39.059 },
         zoom: 1
     });
-    for (i=0; i<markers.length; i++) {
-    getMarker(i);
-    fitMap();
+    for (i = 0; i < markers.length; i++) {
+        getMarker(i);
+        fitMap();
     }
 }
