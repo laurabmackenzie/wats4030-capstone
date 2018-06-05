@@ -137,10 +137,6 @@
         padding:  1% 0 2% 0;
     }
 
-    #addTrip, #clearButton {
-        -webkit-appearance: none;
-    }
-
 
     #copyright {
         text-align:center;
