@@ -45,26 +45,27 @@
   <div class="container-fluid content">
     <form id="trip-entry">
       <div class="form-group">
-        <label for="destinationName">What place do you want to visit?</label>
+        <label id="destinationLabel"for="destinationName">What place do you want to visit?</label>
         <input type="text" class="form-control" id="destinationName">
         </textarea>
       </div>
       <div class="form-group">
         <label for="destinationDescription">What makes this place special?</label>
-        <textarea class="form-control" id="destinationDescription" rows="3"></textarea>
+        <textarea class="form-control" id="destinationDescription" rows="5"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-secondary" id="addTrip">Add Trip</button>
       </div>
     </form>
     <div class="row" id="listrow">
-      <div class="list col-md-4">
+      <div class="list col-md-6">
+        <h1>My Dream Destinations</h1>
         <div class="destinationList" id="listofplaces"></div>
-      </div>
-      <div id="map" class="col-md-8"></div>
-    </div>
-    <div class="clearbuttonArea">
-      <button type=button id="clearButton" class="btn btn-secondary">Delete All Destinations</button>
+        <div class= "row clearbuttonArea">
+            <button type=button id="clearButton" class="btn btn-secondary">Delete All Destinations</button>
+          </div>
+        </div>
+      <div id="map" class="col-md-6"></div>
     </div>
     <p id="copyright">copyright©2018. Laura Mackenzie. All Rights Reserved.</p>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

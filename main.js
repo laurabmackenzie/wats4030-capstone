@@ -93,6 +93,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     form.addEventListener("submit", addTrip);
     let clear = document.getElementById('clearButton');
     clear.addEventListener("click", clearAll);
+    console.log(trips.length);
+    if (trips.length==0) {
+    clear.style.visibility="hidden";
+    }
 });
 
 
@@ -106,6 +110,8 @@ function addTrip(event) {
     }
     saveTrips();
     saveMarkers();
+    let clear = document.getElementById('clearButton');
+    clear.style.visibility="visible";
 };
 
 
@@ -116,6 +122,8 @@ function clearAll(event) {
     loadMarkers();
     displayList(trips);
     initMap();
+    let clear = document.getElementById('clearButton');
+    clear.style.visibility="hidden";
 }
 
 
@@ -129,6 +137,11 @@ function deleteDestination(event) {
     saveTrips();
     saveMarkers();
     initMap();
+    console.log(trips.length);
+    if (trips.length==0) {
+        let clear = document.getElementById('clearButton');
+        clear.style.visibility="hidden";
+    }
 }
 
 
