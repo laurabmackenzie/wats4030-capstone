@@ -32,6 +32,10 @@
     .hero {
         background-color: transparent;
     }
+
+    #addTrip {
+        width: 100%;
+    }
     
     .logo {
         color: white;
@@ -128,6 +132,8 @@
     .destinationList {
         padding-left: 0px;
         margin-bottom: 0.3rem;
+        overflow-y: auto;
+        max-height: 350px;
     }
 
     .resources {
@@ -143,10 +149,16 @@
     }
 
     #clearButton {
-        margin-left: 4%;
+        margin-left: 6%;
+        width: 100%;
+    }
+
+    #viewallButton {
+        margin: 2% 0 0 6%;
+        width: 100%;
     }
         
-    .clearbuttonArea {
+    .buttonArea {
         padding:  1% 0 2% 0;
     }
 

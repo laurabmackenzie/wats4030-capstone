@@ -93,11 +93,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     form.addEventListener("submit", addTrip);
     let clear = document.getElementById('clearButton');
     clear.addEventListener("click", clearAll);
-    console.log(trips.length);
     if (trips.length==0) {
-    clear.style.visibility="hidden";
+        clear.style.visibility="hidden";
     }
-});
+    let view = document.getElementById('viewallButton');
+    view.addEventListener("click", viewAll);
+   });
 
 
 
@@ -112,6 +113,9 @@ function addTrip(event) {
     saveMarkers();
     let clear = document.getElementById('clearButton');
     clear.style.visibility="visible";
+    //let container=getElementById('listofplaces');
+    //let item = document.getElementById('trip-entry');
+    //container.scrollTop=item.scrollHeight;
 };
 
 
@@ -126,6 +130,9 @@ function clearAll(event) {
     clear.style.visibility="hidden";
 }
 
+function viewAll(event) {
+    location.reload();
+}
 
 
 function deleteDestination(event) {
