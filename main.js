@@ -113,10 +113,12 @@ function addTrip(event) {
     saveMarkers();
     let clear = document.getElementById('clearButton');
     clear.style.visibility="visible";
-    //let container=getElementById('listofplaces');
-    //let item = document.getElementById('trip-entry');
-    //container.scrollTop=item.scrollHeight;
-};
+}
+
+function scrollList() {
+    var scrollItem=document.getElementById('listofplaces');
+    scrollItem.scrollTop=scrollItem.scrollHeight;
+}
 
 
 function clearAll(event) {
@@ -215,6 +217,7 @@ function getMap(destination) {
             document.getElementById('destinationName').value = "";
             document.getElementById('destinationDescription').value = "";
             displayList(trips);
+            scrollList();
             map.panTo(new google.maps.LatLng(lat, lng));
             map.setZoom(5);
             createMarker(lat, lng, address);
