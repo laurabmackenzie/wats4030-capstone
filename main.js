@@ -14,6 +14,7 @@ function loadMarkers() {
     markers = JSON.parse(localStorage.getItem("markers") || "[]");
 }
 
+//creates a map marker
 function getMarker(i) {
     if (trips[i].lat = markers[i].lat) {
         if (trips[i].lng = markers[i].lng) {
@@ -80,6 +81,7 @@ function displayList(trips) {
             listItem.appendChild(p);
         }
         list.appendChild(listItem);
+        //event listeners
         deleteIcon.addEventListener("click", deleteDestination);
         listItem.addEventListener("click", updateInfo)
     }
@@ -93,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     form.addEventListener("submit", addTrip);
     let clear = document.getElementById('clearButton');
     clear.addEventListener("click", clearAll);
+    //hide deleteall button if there's no saved list.
     if (trips.length==0) {
         clear.style.visibility="hidden";
     }
@@ -111,16 +114,19 @@ function addTrip(event) {
     }
     saveTrips();
     saveMarkers();
+    //makes clear all button visible when a trip is added.
     let clear = document.getElementById('clearButton');
     clear.style.visibility="visible";
 }
 
+//scrolls to the bottom of the list so users can see most recently added destination.
 function scrollList() {
     var scrollItem=document.getElementById('listofplaces');
     scrollItem.scrollTop=scrollItem.scrollHeight;
 }
 
 
+//deletes entire list
 function clearAll(event) {
     event.preventDefault();
     localStorage.clear();
@@ -128,15 +134,18 @@ function clearAll(event) {
     loadMarkers();
     displayList(trips);
     initMap();
+    //hides delete all button
     let clear = document.getElementById('clearButton');
     clear.style.visibility="hidden";
 }
 
+//way for users to see all desination on map wihtout clicking refresh
 function viewAll(event) {
     location.reload();
 }
 
 
+//delete and individual destination.
 function deleteDestination(event) {
     event.preventDefault();
     var index = this.parentNode.dataset.index;
@@ -146,14 +155,14 @@ function deleteDestination(event) {
     saveTrips();
     saveMarkers();
     initMap();
-    console.log(trips.length);
+    //hides delete all button when the last destination is deleted.
     if (trips.length==0) {
         let clear = document.getElementById('clearButton');
         clear.style.visibility="hidden";
     }
 }
 
-
+//pans and zooms in on clicked location
 function updateInfo(event) {
     event.preventDefault();
     removeActive();
@@ -168,6 +177,7 @@ function updateInfo(event) {
 }
 
 
+//removes active state 
 function removeActive() {
     var item = document.querySelector(".active");
     if (item) {
@@ -175,7 +185,7 @@ function removeActive() {
     }
 }
 
-
+//creates a map marker
 function createMarker(lat, lng, address) {
     var myLatLng = { lat: lat, lng: lng };
     var newmarker = new google.maps.Marker({

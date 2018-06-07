@@ -160,6 +160,7 @@
         
     .buttonArea {
         padding:  1% 0 2% 0;
+        width: 50%;
     }
 
     h1 {
@@ -188,6 +189,19 @@
         #map {
             margin: 5%;
         }
+
+        .buttonArea {
+            margin: 0;
+            width: 100%;
+        }
+
+        #viewallButton {
+            margin: 0 20px 0 20px;
+        }
+
+        #clearButton {
+            margin: 0 20px 5px 20px;
+        }
     }
 
     @media only screen and (min-width: 414px) and (orientation: landscape) and (max-width: 768px) {
@@ -197,6 +211,19 @@
         
         .logo {
             padding-top: 0;
+        }
+
+        .buttonArea {
+            margin: 0;
+            width: 100%;
+        }
+
+        #viewallButton {
+            margin: 0 20px 0 20px;
+        }
+
+        #clearButton {
+            margin: 0 20px 5px 20px;
         }
     }
     
@@ -232,5 +259,9 @@
 
         #trip-entry {
             float:left;
+        }
+
+        .destinationList {
+            max-height: 500px;
         }
     }
