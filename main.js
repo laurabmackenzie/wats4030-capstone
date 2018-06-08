@@ -141,7 +141,9 @@ function clearAll(event) {
 
 //way for users to see all desination on map wihtout clicking refresh
 function viewAll(event) {
-    location.reload();
+    initMap();
+    var map=getElementById('map');
+    map.scrollIntoView();
 }
 
 
