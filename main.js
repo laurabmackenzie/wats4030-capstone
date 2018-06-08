@@ -137,6 +137,7 @@ function clearAll(event) {
     //hides delete all button
     let clear = document.getElementById('clearButton');
     clear.style.visibility="hidden";
+    //scrolls up to the top of the document
     var top=document.getElementById('destinationLabel');
     top.scrollIntoView();
 }
@@ -144,6 +145,7 @@ function clearAll(event) {
 //way for users to see all desination on map wihtout clicking refresh
 function viewAll(event) {
     initMap();
+    //scrolls down to the map
     var mapArea=document.getElementById('map');
     mapArea.scrollIntoView();
 }
