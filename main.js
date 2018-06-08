@@ -137,6 +137,8 @@ function clearAll(event) {
     //hides delete all button
     let clear = document.getElementById('clearButton');
     clear.style.visibility="hidden";
+    var form=getElementById('trip-entry');
+    form.scrollIntoView();
 }
 
 //way for users to see all desination on map wihtout clicking refresh
