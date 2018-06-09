@@ -138,8 +138,7 @@ function clearAll(event) {
     let clear = document.getElementById('clearButton');
     clear.style.visibility="hidden";
     //scrolls up to the top of the document
-    var top=document.getElementById('destinationLabel');
-    top.scrollIntoView();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
 //way for users to see all desination on map wihtout clicking refresh
